@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> -->
+	<title>Forager</title>
+
+	<style>
+		.map {
+			width: 500px;
+			height: 500px;
+		}
+	</style>
+</head>
+<body>
+	<p>Lat: <span data-id="lat"></span></p>
+	<p>Lng: <span data-id="lng"></span></p>
+	<p>Accuracy: <span data-id="accuracy"></span></p>
+	<ul data-id="log-list"></ul>
+
+	<button data-id="update">update</button>
+	<button data-id="log">log</button>
+	<div id="map" class="map"></div>
+
+	<script src="index.js"></script>
+</body>
+</html>
