@@ -14,7 +14,7 @@ const context = {
 	logs: [],
 }
 
-const LOG_STORAGE_KEY = 'forager-logs';
+export const LOG_STORAGE_KEY = 'forager-logs';
 
 export const logMachine = createMachine({
 	id: 'log',
