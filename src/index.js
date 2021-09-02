@@ -1,7 +1,5 @@
 import { interpret } from 'xstate';
-import { mapMachine } from './map.machine';
-import { logMachine } from './log.machine';
-import { appMachine } from './app.machine';
+import { appMachine } from './machines/app.machine';
 import "leaflet/dist/leaflet.css";
 
 const $accuracy = document.querySelector('[data-id="accuracy"]');

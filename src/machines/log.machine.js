@@ -8,7 +8,7 @@ import {
   interpret,
   spawn
 } from 'xstate';
-import { fetchFromLocalStorage, saveToLocalStorage } from './utils/storage';
+import { fetchFromLocalStorage, saveToLocalStorage } from '../utils/storage';
 
 const context = {
 	logs: [],
