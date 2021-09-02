@@ -9,21 +9,72 @@
 	<title>Forager</title>
 
 	<style>
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		body[data-mode="logging"] .logging {
+			display: block;
+		}
+		
+		body[data-mode="logging"] .listing {
+			display: none;
+		}
+
+		.logging {
+			display: none;
+		}
+
 		.map {
 			width: 100%;
-			height: 500px;
+			height: 300px;
+		}
+
+		[data-id="switch-mode"] {
+			position: fixed;
+			bottom: 16px;
+			right: 16px;
+			display: grid;
+			place-content: center;
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			border: 0;
+			background: #bada55;
+			z-index: 9999;
+		}
+
+		[data-id="log-button"] {
+			display: grid;
+			place-content: center;
+			width: 100%;
+			height: 100vh;
+			border: 0;
+			background: #f0a;
+			font-size: 2rem;
+			color: white;
 		}
 	</style>
 </head>
-<body>
-	<p>Lat: <span data-id="lat"></span></p>
-	<p>Lng: <span data-id="lng"></span></p>
-	<p>Accuracy: <span data-id="accuracy"></span></p>
-	<ul data-id="log-list"></ul>
+<body data-mode="listing">
+	<div class="listing">
+		<div id="map" class="map"></div>
+		<p>Lat: <span data-id="lat"></span></p>
+		<p>Lng: <span data-id="lng"></span></p>
+		<p>Accuracy: <span data-id="accuracy"></span></p>
+		<ul data-id="log-list"></ul>
+		<button data-id="clear-logs">clear logs</button>
+	</div>
 
-	<button data-id="update">update</button>
-	<button data-id="log">log</button>
-	<div id="map" class="map"></div>
+	<div class="logging">
+		<button data-id="log-button">Log</button>
+	</div>
+
+	<button data-id="switch-mode">
+		x
+	</button>
 
 	<script src="./src/index.js"></script>
 </body>

@@ -5,7 +5,6 @@ import "leaflet/dist/leaflet.css";
 const $accuracy = document.querySelector('[data-id="accuracy"]');
 const $lat = document.querySelector('[data-id="lat"]');
 const $lng = document.querySelector('[data-id="lng"]');
-const $update = document.querySelector('[data-id="update"]');
 
 const appService = interpret(appMachine).onTransition(state => console.log('TRANSITION', state))
 appService.start();
@@ -37,16 +36,6 @@ const handleGeolocationError = ({ code, message }) => {
 
 navigator.geolocation.watchPosition(handlePositionChange, handleGeolocationError);
 
-$update.addEventListener('click', () => {
-	appService.send({
-		type: 'POSITION_CHANGE',
-		coords: {
-			latitude: 51.8,
-			longitude: 0.8466,
-		},
-		timestamp: 123,
-	})
-});
 
 const handleLogItem = () => {
 	appService.send({
@@ -58,4 +47,21 @@ const handleLogItem = () => {
 	});
 }
 
-document.querySelector('[data-id="log"]').addEventListener('click', handleLogItem);
+const handleSwitchMode = () => {
+	const modes = {
+		listing: 'listing',
+		logging: 'logging',
+	}
+
+	const { mode: currentMode } = document.body.dataset;
+	// const newMode = currentMode === 'listing' ? 'logging' : 'listing';
+	document.body.dataset.mode = currentMode === 'listing' ? 'logging' : 'listing';
+}
+
+const handleClearLogs = () => {
+	localStorage.clear();
+}
+
+document.querySelector('[data-id="log-button"]').addEventListener('click', handleLogItem);
+document.querySelector('[data-id="switch-mode"]').addEventListener('click', handleSwitchMode);
+document.querySelector('[data-id="clear-logs"]').addEventListener('click', handleClearLogs);

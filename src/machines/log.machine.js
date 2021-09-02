@@ -43,12 +43,16 @@ export const logMachine = createMachine({
 		renderLogs: (ctx) => {
 			const $logList = document.querySelector('[data-id="log-list"]');
 			
-			$logList.innerHTML = ctx.logs.map(log => `
-				<li>
-					<p>${log.loggedAt}</p>
-					<p>Lat: ${log.userPosition.lat} Lng: ${log.userPosition.lng}</p>
-				</li>
-			`).join('');
+			$logList.innerHTML = ctx.logs
+				.reverse()
+				.slice(0, 5)
+				.map(log => `
+					<li>
+						<p>${log.loggedAt}</p>
+						<p>Lat: ${log.userPosition.lat} Lng: ${log.userPosition.lng}</p>
+					</li>
+				`)
+				.join('');
 		},
 		saveLogs:(ctx) => {
 			saveToLocalStorage(LOG_STORAGE_KEY, ctx.logs);
